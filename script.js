@@ -13,27 +13,26 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == computerSelection) {
+
         return `Draw both played ${playerSelection}`
     }
     else if ((playerSelection == "rock" && computerSelection == "scissor") || (playerSelection == "paper" && computerSelection == "rock") || playerSelection == "scissor" && computerSelection == "paper") {
         return `Player has won! Player chose ${playerSelection} and computer chose ${computerSelection}`;
     }
     else {
-        return `Computer has won =( Player chose ${playerSelection} and computer chose ${computerSelection}`;
+        return `Computer has won. Player chose ${playerSelection} and computer chose ${computerSelection}`;
     }
 
 }
 
 const computerSelection = getComputerChoice();
 const buttons = document.querySelectorAll('button');
+const result = document.getElementById('result')
 buttons.forEach((button) => {
     button.addEventListener('click', function (e) {
         const playerSelection = e.target.className;
         const computerSelection = getComputerChoice();
-        console.log(playerSelection);
-        console.log(computerSelection);
-        console.log(playRound(playerSelection, computerSelection));
-
+        result.innerText = playRound(playerSelection, computerSelection);
     });
 });
 
