@@ -1,0 +1,21 @@
+#buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+}
+
+#result {
+    display: flex;
+    justify-content: center;
+}
+
+#scoreboard {
+    display: flex;
+    justify-content: center;
+}
