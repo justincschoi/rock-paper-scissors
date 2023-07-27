@@ -14,16 +14,17 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == computerSelection) {
 
-        return `Draw both played ${playerSelection}\n Player: ${playerWins} vs Computer: ${computerWins}`
+        return `Draw both played ${playerSelection}`;
     }
     else if ((playerSelection == 'rock' && computerSelection == 'scissor') || (playerSelection == 'paper' && computerSelection == 'rock') || playerSelection == "scissor" && computerSelection == "paper") {
         playerWins++;
-        return `Player has won! Player chose ${playerSelection} and computer chose ${computerSelection}\n Player: ${playerWins} vs Computer: ${computerWins}`;
+        return `Player has won! Player chose ${playerSelection} and computer chose ${computerSelection}`;
     }
     else {
         computerWins++;
-        return `Computer has won. Player chose ${playerSelection} and computer chose ${computerSelection}\n Player: ${playerWins} vs Computer: ${computerWins}`;
+        return `Computer has won. Player chose ${playerSelection} and computer chose ${computerSelection}`;
     }
+
 }
 
 function checkWinner() {
@@ -43,12 +44,16 @@ function checkWinner() {
 let computerWins = 0;
 let playerWins = 0;
 const buttons = document.querySelectorAll('button');
-const result = document.getElementById('result')
+const result = document.getElementById('result');
+const scorePlayer = document.getElementById('score-player');
+const scoreComputer = document.getElementById('score-computer');
 buttons.forEach((button) => {
     button.addEventListener('click', function (e) {
         const playerSelection = e.target.className;
         const computerSelection = getComputerChoice();
         result.innerText = playRound(playerSelection, computerSelection);
+        scorePlayer.textContent = `Player: ${playerWins}`;
+        scoreComputer.textContent = `Computer: ${computerWins}`;
         checkWinner();
     });
 });
