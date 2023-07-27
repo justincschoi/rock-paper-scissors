@@ -1,8 +1,5 @@
-#buttons {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-
+.content {
+    text-align: center;
 }
 
 .header {
@@ -10,12 +7,28 @@
     justify-content: center;
 }
 
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+}
+
+.rock,
+.paper,
+.scissors {
+    font-size: 48px;
+    width: 75px;
+}
+
 #result {
     display: flex;
     justify-content: center;
 }
 
-#scoreboard {
+.scoreboard-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 200px;
+    margin: 0 auto;
 }
