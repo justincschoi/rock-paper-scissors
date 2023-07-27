@@ -12,16 +12,28 @@
     <header class="header">
         <h1>ROCK PAPER SCISSORS</h1>
     </header>
-
-    <div id="result"></div>
-    <div id="scoreboard">
+    <div class="content">
+        <div id="result"></div>
         <h2>SCOREBOARD</h2>
-    </div>
+        <div class="scoreboard-container">
 
-    <div id="buttons">
-        <button class="rock">✊</button>
-        <button class="paper">✋</button>
-        <button class="scissors">✌️</button>
+            <div class="score-content">
+                <div class="player-choice"></div>
+                <p id="score-player">Player: 0</p>
+            </div>
+            <div class="score-content">
+                <div class="computer-choice"></div>
+                <p id="score-computer">Computer: 0</p>
+            </div>
+
+
+        </div>
+
+        <div class="buttons">
+            <button class="rock">✊</button>
+            <button class="paper">✋</button>
+            <button class="scissors">✌️</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
