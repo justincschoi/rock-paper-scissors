@@ -20,6 +20,11 @@
     width: 75px;
 }
 
+.player-choice,
+.computer-choice {
+    font-size: 48px;
+}
+
 #result {
     display: flex;
     justify-content: center;
