@@ -11,4 +11,9 @@ function getComputerChoice() {
 
 }
 
+function getHumanChoice() {
+    return prompt("Please select: rock, paper or scissors");
+}
+
 const computerSelection = getComputerChoice();
+const humanSelection = getHumanChoice();
