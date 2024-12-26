@@ -1,4 +1,5 @@
 const buttons = document.querySelector('.btnContainer');
+const results = document.querySelector('.result');
 
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3);
@@ -33,16 +34,22 @@ function playRound(event) {
     let humanChoice = getHumanChoice(event);
     let computerChoice = getComputerChoice();
 
-    if (humanChoice == 'rock' && computerChoice == 'scissors' || humanChoice == 'paper' && computerChoice == 'rock' || humanChoice == 'scissors' && computerChoice == 'paper') {
-        console.log(`Human has selected ${humanChoice} and Computer has selected ${computerChoice}. Human wins!`);
-
+    if (
+        (humanChoice == 'rock' && computerChoice == 'scissors') ||
+        (humanChoice == 'paper' && computerChoice == 'rock') ||
+        (humanChoice == 'scissors' && computerChoice == 'paper')
+    ) {
+        results.innerText = `Human has selected ${humanChoice} and Computer has selected ${computerChoice}. Human wins!`;
     }
-    else if (humanChoice == 'rock' && computerChoice == 'paper' || humanChoice == 'paper' && computerChoice == 'scissors' || humanChoice == 'scissors' && computerChoice == 'rock') {
-        console.log(`Human has selected ${humanChoice} and Computer has selected ${computerChoice}. Computer wins!`);
-
+    else if (
+        (humanChoice == 'rock' && computerChoice == 'paper') ||
+        (humanChoice == 'paper' && computerChoice == 'scissors') ||
+        (humanChoice == 'scissors' && computerChoice == 'rock')
+    ) {
+        results.innerText = `Human has selected ${humanChoice} and Computer has selected ${computerChoice}. Computer wins!`;
     }
     else {
-        console.log(`Human has selected ${humanChoice} and Computer has selected ${computerChoice}. DRAW!`);
+        results.innerText = `Human has selected ${humanChoice} and Computer has selected ${computerChoice}. DRAW!`;
     }
 }
 
