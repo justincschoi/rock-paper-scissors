@@ -1,6 +1,7 @@
 const buttons = document.querySelector('.btnContainer');
 const results = document.querySelector('.result');
 const score = document.querySelector('.score');
+const end = document.querySelector('.end');
 
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3);
@@ -29,35 +30,56 @@ function getHumanChoice(event) {
             break;
     }
 }
-let humanScore = 0;
-let computerScore = 0;
 
-function playRound(event) {
-    let humanChoice = getHumanChoice(event);
-    let computerChoice = getComputerChoice();
+function playGame() {
+    let humanScore = 0;
+    let computerScore = 0;
+    let round = 0;
 
-    if (
-        (humanChoice == 'rock' && computerChoice == 'scissors') ||
-        (humanChoice == 'paper' && computerChoice == 'rock') ||
-        (humanChoice == 'scissors' && computerChoice == 'paper')
-    ) {
-        results.innerText = `Human has selected ${humanChoice} and Computer has selected ${computerChoice}. Human wins!`;
-        humanScore++;
-        score.innerText = `HUMAN: ${humanScore} - COMPUTER: ${computerScore}`;
+    function playRound(event) {
+        let humanChoice = getHumanChoice(event);
+        let computerChoice = getComputerChoice();
+
+        if (
+            (humanChoice == 'rock' && computerChoice == 'scissors') ||
+            (humanChoice == 'paper' && computerChoice == 'rock') ||
+            (humanChoice == 'scissors' && computerChoice == 'paper')
+        ) {
+            results.innerText = `Human has selected ${humanChoice} and Computer has selected ${computerChoice}. Human wins!`;
+            humanScore++;
+            round++;
+            score.innerText = `HUMAN: ${humanScore} - COMPUTER: ${computerScore}`;
+        }
+        else if (
+            (humanChoice == 'rock' && computerChoice == 'paper') ||
+            (humanChoice == 'paper' && computerChoice == 'scissors') ||
+            (humanChoice == 'scissors' && computerChoice == 'rock')
+        ) {
+            results.innerText = `Human has selected ${humanChoice} and Computer has selected ${computerChoice}. Computer wins!`;
+            computerScore++;
+            round++;
+            score.innerText = `HUMAN: ${humanScore} - COMPUTER: ${computerScore}`;
+        }
+        else {
+            results.innerText = `Human has selected ${humanChoice} and Computer has selected ${computerChoice}. DRAW!`;
+            round++;
+            score.innerText = `HUMAN: ${humanScore} - COMPUTER: ${computerScore}`;
+        }
+
+        if (round === 5) {
+            if (humanScore > computerScore) {
+                end.innerText = `Human win! Human has won ${humanScore} while Computer has won ${computerScore}.`;
+            }
+            else if (computerScore > humanScore) {
+                end.innerText = `Computer win! Computer has won ${computerScore} while human has won ${humanScore}.`;
+            }
+            else {
+                end.innerText = `DRAW! Human and Computer has both won ${humanScore}.`;
+            }
+        }
     }
-    else if (
-        (humanChoice == 'rock' && computerChoice == 'paper') ||
-        (humanChoice == 'paper' && computerChoice == 'scissors') ||
-        (humanChoice == 'scissors' && computerChoice == 'rock')
-    ) {
-        results.innerText = `Human has selected ${humanChoice} and Computer has selected ${computerChoice}. Computer wins!`;
-        computerScore++;
-        score.innerText = `HUMAN: ${humanScore} - COMPUTER: ${computerScore}`;
-    }
-    else {
-        results.innerText = `Human has selected ${humanChoice} and Computer has selected ${computerChoice}. DRAW!`;
-        score.innerText = `HUMAN: ${humanScore} - COMPUTER: ${computerScore}`;
-    }
+
+    buttons.addEventListener('click', playRound);
 }
 
-buttons.addEventListener('click', playRound);
+playGame();
