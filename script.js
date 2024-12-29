@@ -39,6 +39,8 @@ function playGame() {
     function playRound(event) {
         let humanChoice = getHumanChoice(event);
         let computerChoice = getComputerChoice();
+        end.innerText = '';
+        results.innerText = '';
 
         if (
             (humanChoice == 'rock' && computerChoice == 'scissors') ||
@@ -76,6 +78,9 @@ function playGame() {
             else {
                 end.innerText = `DRAW! Human and Computer has both won ${humanScore}.`;
             }
+            humanScore = 0;
+            computerScore = 0;
+            round = 0;
         }
     }
 
